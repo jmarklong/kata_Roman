@@ -173,10 +173,52 @@ namespace UnitTestRoman
             {
                 Expected[i - 1] = i;
                 Actual[i - 1] = MyNumber.ToArabic(MyNumber.ToRoman(i));
-
             }
-
             CollectionAssert.AreEqual(Expected, Actual);
+        }
+        [TestMethod]
+        public void Assert_First_1000_are_correct()
+        {
+            int[] Expected = new int[999];
+            int[] Actual = new int[999];
+            for (int i = 1; i < 1000; i++)
+            {
+                Expected[i - 1] = i;
+                Actual[i - 1] = MyNumber.ToArabic(MyNumber.ToRoman(i));
+            }
+            CollectionAssert.AreEqual(Expected, Actual);
+        }
+        [TestMethod]
+        public void Assert_First_4000_are_correct()
+        {
+            int[] Expected = new int[3999];
+            int[] Actual = new int[3999];
+            for (int i = 1; i < 4000; i++)
+            {
+                Expected[i - 1] = i;
+                Actual[i - 1] = MyNumber.ToArabic(MyNumber.ToRoman(i));
+            }
+            CollectionAssert.AreEqual(Expected, Actual);
+        }
+        [TestMethod]
+        public void Assert_998_is_CMXCVIII()
+        {
+            Assert.AreEqual(998, MyNumber.ToArabic("CMXCVIII"));
+        }
+        [TestMethod]
+        public void Assert_999_is_CMXCIX()
+        {
+            Assert.AreEqual(999, MyNumber.ToArabic("CMXCIX"));
+        }
+        [TestMethod]
+        public void Assert_1000_is_M()
+        {
+            Assert.AreEqual(1000, MyNumber.ToArabic("M"));
+        }
+        [TestMethod]
+        public void Assert_1001_is_MI()
+        {
+            Assert.AreEqual(1001, MyNumber.ToArabic("MI"));
         }
     }
 }

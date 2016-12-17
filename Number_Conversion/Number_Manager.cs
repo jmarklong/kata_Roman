@@ -13,11 +13,13 @@ namespace Number_Conversion
         Digit_Place Ones_place = new Digit_Place(1, "I", "V", "X");
         Digit_Place Tens_place = new Digit_Place(10, "X", "L", "C");
         Digit_Place Hundreds_place = new Digit_Place(100, "C", "D", "M");
+        Digit_Place Thousands_place = new Digit_Place(1000, "M", "_v", "_x");
 
         public Number_Manager(int Starting_number)
         {
             Arabic = Starting_number;
-            Roman = Hundreds_place.ToRoman(Arabic) + Tens_place.ToRoman(Arabic) + Ones_place.ToRoman(Arabic);
+            Roman = Thousands_place.ToRoman(Arabic) +
+                Hundreds_place.ToRoman(Arabic) + Tens_place.ToRoman(Arabic) + Ones_place.ToRoman(Arabic);
         }
 
         public Number_Manager(string Starting_number)
@@ -26,7 +28,7 @@ namespace Number_Conversion
             Arabic = Ones_place.ToArabic(Roman, out string Remainder_without_ones);
             Arabic += Tens_place.ToArabic(Remainder_without_ones, out string Remainder_without_tens);
             Arabic += Hundreds_place.ToArabic(Remainder_without_tens, out string Remainder_without_hundreds);
-
+            Arabic += Thousands_place.ToArabic(Remainder_without_hundreds, out string Remainder_without_thousands);
         }
 
         public int ToArabic()
@@ -44,6 +46,7 @@ namespace Number_Conversion
             Arabic = Ones_place.ToArabic(Roman, out string Remainder_without_ones);
             Arabic += Tens_place.ToArabic(Remainder_without_ones, out string Remainder_without_tens);
             Arabic += Hundreds_place.ToArabic(Remainder_without_tens, out string Remainder_without_hundreds);
+            Arabic += Thousands_place.ToArabic(Remainder_without_hundreds, out string Remainder_without_thousands);
 
             return ToArabic();
         }
@@ -56,7 +59,8 @@ namespace Number_Conversion
         public string ToRoman(int an_Arabic)
         {
             Arabic = an_Arabic;
-            Roman = Hundreds_place.ToRoman(Arabic) + Tens_place.ToRoman(Arabic) + Ones_place.ToRoman(Arabic);
+            Roman = Thousands_place.ToRoman(Arabic) +
+                Hundreds_place.ToRoman(Arabic) + Tens_place.ToRoman(Arabic) + Ones_place.ToRoman(Arabic);
             return ToRoman();
         }
     }
