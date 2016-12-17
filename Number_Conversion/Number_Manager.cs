@@ -17,17 +17,35 @@ namespace Number_Conversion
         public Number_Manager(int Starting_number)
         {
             Arabic = Starting_number;
-            Roman = Ones_place.ToRoman(Arabic);
+            Roman = Hundreds_place.ToRoman(Arabic) + Tens_place.ToRoman(Arabic) + Ones_place.ToRoman(Arabic);
         }
 
         public Number_Manager(string Starting_number)
         {
             Roman = Starting_number;
+            Arabic = Ones_place.ToArabic(Roman, out string Remainder_without_ones);
+            Arabic += Tens_place.ToArabic(Remainder_without_ones, out string Remainder_without_tens);
+            Arabic += Hundreds_place.ToArabic(Remainder_without_tens, out string Remainder_without_hundreds);
+
         }
 
         public int ToArabic()
         {
             return Arabic;
+        }
+        /// <summary>
+        /// ToArabic with a string parameter will reset the value of the class
+        /// </summary>
+        /// <param name="a_Roman"></param>
+        /// <returns></returns>
+        public int ToArabic(string a_Roman)
+        {
+            Roman = a_Roman;
+            Arabic = Ones_place.ToArabic(Roman, out string Remainder_without_ones);
+            Arabic += Tens_place.ToArabic(Remainder_without_ones, out string Remainder_without_tens);
+            Arabic += Hundreds_place.ToArabic(Remainder_without_tens, out string Remainder_without_hundreds);
+
+            return ToArabic();
         }
 
         public string ToRoman()
@@ -35,6 +53,12 @@ namespace Number_Conversion
             return Roman;
         }
 
+        public string ToRoman(int an_Arabic)
+        {
+            Arabic = an_Arabic;
+            Roman = Hundreds_place.ToRoman(Arabic) + Tens_place.ToRoman(Arabic) + Ones_place.ToRoman(Arabic);
+            return ToRoman();
+        }
     }
     
     
