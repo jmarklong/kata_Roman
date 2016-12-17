@@ -150,5 +150,33 @@ namespace UnitTestRoman
         {
             Assert.AreEqual(9, MyNumber.ToArabic("IX"));
         }
+        [TestMethod]
+        public void Assert_All_ones_places_convert_to_Roman()
+        {
+            int[] Expected = new int[9];
+            int[] Actual = new int[9];
+            for (int i = 1; i < 10; i++)
+            {
+                Expected[i - 1] = i;
+                Actual[i - 1] = MyNumber.ToArabic(MyNumber.ToRoman(i));
+
+            }
+
+            CollectionAssert.AreEqual(Expected, Actual);
+        }
+        [TestMethod]
+        public void Assert_First100_are_correct()
+        {
+            int[] Expected = new int[99];
+            int[] Actual = new int[99];
+            for (int i = 1; i < 100; i++)
+            {
+                Expected[i - 1] = i;
+                Actual[i - 1] = MyNumber.ToArabic(MyNumber.ToRoman(i));
+
+            }
+
+            CollectionAssert.AreEqual(Expected, Actual);
+        }
     }
 }
