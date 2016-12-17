@@ -7,11 +7,12 @@ namespace UnitTestRoman
     [TestClass]
     public class UnitTest1
     {
+
         [TestMethod]
         public void Assert_1_is_I()
         {
             Number_Manager Test_1 = new Number_Manager(1);
-            Assert.AreEqual("I", "I");
+            Assert.AreEqual("I", Test_1.ToRoman());
         }
         [TestMethod]
         public void Assert_I_is_1()
