@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Digit_Place.cs" />
+    <Compile Include="NumberValue.cs" />
     <Compile Include="Number_Manager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
