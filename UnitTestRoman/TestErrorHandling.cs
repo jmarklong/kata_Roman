@@ -10,8 +10,6 @@ namespace UnitTestRoman
         private Number_Manager MyNumber = new Number_Manager(0);
         private string RomanReturned = null;
         private int ArabicReturned = 0;
-        private string StatusReturned = null;
-        private string ErrorReturned = null;
 
         [TestMethod]
         public void NegativeValues_dont_convert()

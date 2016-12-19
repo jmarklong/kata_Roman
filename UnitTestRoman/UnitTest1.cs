@@ -12,6 +12,11 @@ namespace UnitTestRoman
         /// These are the tests going from Arabic to Roman
         /// </summary>
         [TestMethod]
+        public void Assert_0_is_blank()
+        {
+            Assert.AreEqual("", MyNumber.ToRoman(0));
+        }
+        [TestMethod]
         public void Assert_1_is_I()
         {
             Assert.AreEqual("I", MyNumber.ToRoman(1));
