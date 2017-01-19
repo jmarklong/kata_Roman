@@ -66,7 +66,7 @@ namespace Number_Conversion
             else if (MyValue.Arabic > 4000)
             {
                 MyValue.Roman = "";
-                MyValue.Status = "Out of Suported Roman Range";
+                MyValue.Status = "Out of Supported Roman Range";
                 MyValue.Error_text = "Only Roman numerals between 1 and 4000 are supported";
             }
             else

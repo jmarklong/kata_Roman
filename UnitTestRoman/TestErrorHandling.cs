@@ -21,7 +21,7 @@ namespace UnitTestRoman
         public void LargeValues_say_OutOfRange()
         {
             RomanReturned = MyNumber.ToRoman(32767);
-            Assert.AreEqual("Out of Suported Roman Range", MyNumber.Status());
+            Assert.AreEqual("Out of Supported Roman Range", MyNumber.Status());
         }
         [TestMethod]
         public void GarbageIn_IsDetected()
